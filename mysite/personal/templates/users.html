@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<title>User List</title>
+</head>
+<body>
+
+	<div>
+
+		<h1>List of joined users:</h1>
+		
+			{% for account in accounts %}  
+				>> {{ account.email }} || {{ account.username }} || {{ account.date_joined }} || {{ account.phone }} << 
+				<br>
+   			{% endfor %}
+  		
+	</div>
+
+
+</body>	
+</html>
+
+<!-- END --> 
