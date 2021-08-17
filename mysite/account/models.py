@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 class MyAccountManager(BaseUserManager):
-	def create_user(self, email, username, phone, password=None):
+	def create_user(self, email, username, password=None):
 		if not email:
 			raise ValueError('Users must have an email address')
 		if not username:
@@ -14,7 +14,6 @@ class MyAccountManager(BaseUserManager):
 		user = self.model(
 			email=self.normalize_email(email),
 			username=username,
-			phone=phone
 		)
 
 		user.set_password(password)
@@ -25,8 +24,7 @@ class MyAccountManager(BaseUserManager):
 		user = self.create_user(
 			email=self.normalize_email(email),
 			password=password,
-			username=username,
-			phone=phone
+			username=username
 		)
 		user.is_admin = True
 		user.is_staff = True
@@ -40,7 +38,7 @@ def get_profile_image_filepath(self):
 class Account(AbstractBaseUser):
 	email 					= models.EmailField(verbose_name="email", max_length=60, unique=True)
 	username 				= models.CharField(max_length=30, unique=True)
-	phone 					= models.CharField(max_length=200, null=True)
+	#phone 					= models.CharField(max_length=200, null=True)
 	pic 					= models.ImageField(null=True, upload_to=get_profile_image_filepath, blank=True, default="no image")
 	date_joined				= models.DateTimeField(verbose_name='date joined', auto_now_add=True)
 	last_login				= models.DateTimeField(verbose_name='last login', auto_now=True)
@@ -65,3 +63,4 @@ class Account(AbstractBaseUser):
 	# Does this user have permission to view this app? (ALWAYS YES FOR SIMPLICITY)
 	def has_module_perms(self, app_label):
 		return True
+
