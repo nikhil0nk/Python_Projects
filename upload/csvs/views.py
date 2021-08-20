@@ -8,7 +8,7 @@ def export(request):
     item_resource = ItemResource()
     dataset = item_resource.export()
     response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="persons.xls"'
+    response['Content-Disposition'] = 'attachment; filename="items.xls"'
     return response
 
 def simple_upload(request):
