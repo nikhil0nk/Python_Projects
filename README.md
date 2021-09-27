@@ -1,2 +1,2 @@
-# Django-Projects
-All my Django Projects
+# Python_Projects
+All my major Python Projects assembled in one place
